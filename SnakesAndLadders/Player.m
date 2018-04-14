@@ -18,6 +18,7 @@
     if (self) {
         _gameOver = NO;
         _currentSquare = 0;
+        _output = [NSString new];
         _gameLogic = @{
                        @4 : @14,
                        @9 : @31,
@@ -46,9 +47,11 @@
     if (self.currentSquare >= 100) {
         self.gameOver = YES;
         NSLog(@"Congrats!");
-            
-              };
-    NSString *result = [NSString stringWithFormat:@"You landed on square %ld ", self.currentSquare];
+                };
+    //NSString *result = [NSString stringWithFormat:@"You landed on square %ld ", self.currentSquare];
+    
+    //self.output = [self.output stringByAppendingFormat:@"%ld", self.currentSquare];
+    //NSLog(@"%@", self.output);
     
     NSNumber *current = [NSNumber numberWithInteger:self.currentSquare];
     if ([self.gameLogic objectForKey:current]) {
@@ -59,17 +62,22 @@
         NSString *ladder =[NSString stringWithFormat:@"You stepped on a ladder! You move from %ld to %ld\n", current.integerValue, newCurrent];
         
         if (current.integerValue > newCurrent) {
-            result = [result stringByAppendingString:snake];
-            NSLog(@"%@", result);
+            //result = [result stringByAppendingString:snake];
+            NSLog(@"%@, %@", self.output, snake);
         } else if (current.integerValue < newCurrent) {
-            result = [result stringByAppendingString:ladder];
-            NSLog(@"%@",result);
+            //result = [result stringByAppendingString:ladder];
+            NSLog(@"%@, %@", self.output, ladder);
         }
         
     } else {
-        NSLog(@"%@", result);
+        NSLog(@"%@", self.output);
     }
     
         }
+
+-(NSString*)output {
+    NSString *square = [NSString stringWithFormat:@"You landed on square %ld", self.currentSquare];
+    return square;
+}
 
 @end
