@@ -15,7 +15,8 @@
 @property (nonatomic, strong) NSDictionary *gameLogic;
 @property (nonatomic) BOOL snaked;
 @property (nonatomic) BOOL laddered;
-//@property (nonatomic, strong) NSString *output;
+@property (nonatomic, strong) NSString* name;
+
 @property (nonatomic) BOOL gameOver;
 -(void)roll;
 

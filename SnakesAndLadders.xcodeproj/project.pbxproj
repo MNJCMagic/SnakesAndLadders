@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		279FB0A420826B5400C1EFE7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 279FB0A320826B5400C1EFE7 /* main.m */; };
 		279FB0AC20826C7C00C1EFE7 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 279FB0AB20826C7C00C1EFE7 /* Player.m */; };
+		279FB0DE2084084A00C1EFE7 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 279FB0DD2084084A00C1EFE7 /* PlayerManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		279FB0A320826B5400C1EFE7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		279FB0AA20826C7C00C1EFE7 /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		279FB0AB20826C7C00C1EFE7 /* Player.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		279FB0DC2084084A00C1EFE7 /* PlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
+		279FB0DD2084084A00C1EFE7 /* PlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				279FB0A320826B5400C1EFE7 /* main.m */,
+				279FB0DC2084084A00C1EFE7 /* PlayerManager.h */,
+				279FB0DD2084084A00C1EFE7 /* PlayerManager.m */,
 				279FB0AA20826C7C00C1EFE7 /* Player.h */,
 				279FB0AB20826C7C00C1EFE7 /* Player.m */,
 			);
@@ -126,6 +131,7 @@
 			files = (
 				279FB0AC20826C7C00C1EFE7 /* Player.m in Sources */,
 				279FB0A420826B5400C1EFE7 /* main.m in Sources */,
+				279FB0DE2084084A00C1EFE7 /* PlayerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

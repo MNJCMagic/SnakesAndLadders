@@ -7,12 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Player.h"
+#import "PlayerManager.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        Player *currentPlayer = [Player new];
+        PlayerManager *playerManager = [PlayerManager new];
+        
+        while ([playerManager.players count] == 0) {
+            char howMany[100];
+            NSLog(@"How many players? Please enter a valid numeric value.");
+            fgets(howMany, 100, stdin);
+            NSString *howManyString = [[NSString alloc] initWithUTF8String:howMany];
+            howManyString = [howManyString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            if ([howManyString intValue]) {
+            [playerManager createPlayers:[howManyString integerValue]];
+        }
+             }
         
         
         while (true) {
@@ -23,17 +34,19 @@ int main(int argc, const char * argv[]) {
             inputString = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             if ([inputString isEqualToString:@"r"] || [inputString isEqualToString:@"roll"]) {
-                
-                [currentPlayer roll];
-                NSLog(@"%@", [currentPlayer output]);
-                if ([currentPlayer gameOver]) {
-                    NSLog(@"You win!");
-                    break;
+                // roll
+                [playerManager managerRoll];
+                // output result
+                NSLog(@"%@", [playerManager managerOutput]);
+                //check for game over
+//                if ([playerManager gameOver]) {
+//                    NSLog(@"You win!");
+//                    break;
                 }
             }
             
         }
         
     }
-    return 0;
-}
+//return 0;
+
