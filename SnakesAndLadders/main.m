@@ -25,8 +25,9 @@ int main(int argc, const char * argv[]) {
             if ([inputString isEqualToString:@"r"] || [inputString isEqualToString:@"roll"]) {
                 
                 [currentPlayer roll];
+                NSLog(@"%@", [currentPlayer output]);
                 if ([currentPlayer gameOver]) {
-                    NSLog(@"You win");
+                    NSLog(@"You win!");
                     break;
                 }
             }

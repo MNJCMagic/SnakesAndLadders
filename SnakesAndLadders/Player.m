@@ -18,7 +18,6 @@
     if (self) {
         _gameOver = NO;
         _currentSquare = 0;
-        _output = [NSString new];
         _gameLogic = @{
                        @4 : @14,
                        @9 : @31,
@@ -40,43 +39,46 @@
 }
 
 -(void)roll {
-    
+    self.laddered = NO;
+    self.snaked = NO;
     NSInteger rolled = arc4random_uniform(6) + 1;
     NSLog(@"%ld", rolled);
+    self.lastSquare = self.currentSquare;
     self.currentSquare = self.currentSquare + rolled;
-    if (self.currentSquare >= 100) {
-        self.gameOver = YES;
-        NSLog(@"Congrats!");
-                };
-    //NSString *result = [NSString stringWithFormat:@"You landed on square %ld ", self.currentSquare];
-    
-    //self.output = [self.output stringByAppendingFormat:@"%ld", self.currentSquare];
-    //NSLog(@"%@", self.output);
+
     
     NSNumber *current = [NSNumber numberWithInteger:self.currentSquare];
     if ([self.gameLogic objectForKey:current]) {
         NSNumber *new = [self.gameLogic objectForKey:current];
         NSInteger newCurrent = [new integerValue];
+        self.lastSquare = self.currentSquare;
         self.currentSquare = newCurrent;
-        NSString *snake = [NSString stringWithFormat:@"You stepped on a snake! You move from %ld to %ld\n", current.integerValue, newCurrent];
-        NSString *ladder =[NSString stringWithFormat:@"You stepped on a ladder! You move from %ld to %ld\n", current.integerValue, newCurrent];
-        
-        if (current.integerValue > newCurrent) {
-            //result = [result stringByAppendingString:snake];
-            NSLog(@"%@, %@", self.output, snake);
-        } else if (current.integerValue < newCurrent) {
-            //result = [result stringByAppendingString:ladder];
-            NSLog(@"%@, %@", self.output, ladder);
+        if (self.lastSquare > self.currentSquare) {
+            self.snaked = YES;
+
+        } else if (self.lastSquare < self.currentSquare) {
+
+            self.laddered = YES;
         }
         
-    } else {
-        NSLog(@"%@", self.output);
     }
     
         }
 
 -(NSString*)output {
-    NSString *square = [NSString stringWithFormat:@"You landed on square %ld", self.currentSquare];
+    if (self.currentSquare >= 100) {
+        self.gameOver = YES;
+        return @"Congrats!";
+    };
+    NSString *square = [NSString stringWithFormat:@"You landed on square %ld ", self.currentSquare];
+
+    if (self.snaked == YES) {
+        NSString *squareSnake = [NSString stringWithFormat:@"You landed on square %ld - a snake! You move to square %ld", self.lastSquare, self.currentSquare];
+        return squareSnake;
+    } else if (self.laddered == YES) {
+        NSString *squareLadder = [NSString stringWithFormat:@"You landed on square %ld - a ladder! You move to square %ld", self. lastSquare, self.currentSquare];
+        return squareLadder;
+    }
     return square;
 }
 
